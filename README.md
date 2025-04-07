@@ -61,6 +61,8 @@ Alternatively, manually edit `/etc/network/interfaces` to include entries for `e
 By default, Alpine (and Linux in general) does not forward IP packets between interfaces until enabled. Do the following on Alpine as root:
 
 ```bash
+# To see the current settings
+sysctl -a | grep ip_forward
 # Enable IPv4 forwarding in the kernel (this persists in /etc/sysctl.conf)
 echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p  # apply the sysctl settings immediately
