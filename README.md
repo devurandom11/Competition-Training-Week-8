@@ -9,6 +9,13 @@ In this workshop, we will build a virtual network environment with four Linux VM
 *   Arch Linux as a file server in the LAN running vsftpd (FTP server) and Samba (SMB file sharing), accessible only from the LAN.
 *   Ubuntu Desktop as a jump-box in the LAN, which will be used to access the other servers (e.g. SSH into them, browse the web service, test FTP/SMB, etc.). This simulates an admin workstation that has access to both networks.
 
+*** The credentials for the VMs are:
+*   Alpine: `administrator/Coastline!`
+*   CentOS: `administrator/Coastline!`
+*   Arch: `administrator/Coastline!`
+*   Ubuntu: `administrator/Coastline!`
+
+
 ### Network segments
 
 The Alpine router will separate three networks (one WAN, plus two internal networks). The LAN subnet will be `192.168.10.0/24` (trusted internal network) and the DMZ subnet will be `10.10.10.0/24` (perimeter network for public-facing server). The router's firewall will be configured so that external (WAN) traffic can reach the DMZ web server (on specific ports) but not the LAN, and the LAN can reach the DMZ (for example, the jump-box can reach the web server), while the DMZ cannot initiate connections into the LAN. The Arch file server will be restricted to only communicate within the LAN and not with the DMZ, whereas the Ubuntu jump-box will be allowed to access the DMZ. All internet-bound traffic from LAN/DMZ will go through the Alpine router (which performs NAT).
